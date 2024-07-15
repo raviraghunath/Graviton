@@ -1,0 +1,29 @@
+SANDY
+	SANDY has purchased BASIC, which has 100 credit(s), by paying $100
+	SANDY has used S1 service, which is 1 credit(s) 
+	SANDY has used S1 service, which is 1 credit(s) 
+	Not sufficient credits for Service : S4
+	SANDY has used S1 service, which is 1 credit(s) 
+	SANDY has used S1 service, which is 1 credit(s) 
+Remaining Balance : 96 credits
+MADAN
+	MADAN has purchased PREMIUM, which has 500 credit(s), by paying $450
+	MADAN has used S2 service, which is 2 credit(s) 
+	MADAN has used S3 service, which is 3 credit(s) 
+Remaining Balance : 495 credits
+ALAN
+	ALAN has purchased STANDARD, which has 250 credit(s), by paying $225
+	ALAN has purchased BASIC, which has 100 credit(s), by paying $100
+	ALAN has used S1 service, which is 1 credit(s) 
+	ALAN has used S1 service, which is 1 credit(s) 
+Remaining Balance : 348 credits
+PETER
+	PETER has purchased BASIC, which has 100 credit(s), by paying $100
+	PETER has used S1 service, which is 1 credit(s) 
+Remaining Balance : 99 credits
+SUFIYA
+	SUFIYA has purchased STANDARD, which has 250 credit(s), by paying $225
+	SUFIYA has used S2 service, which is 2 credit(s) 
+	SUFIYA has used S3 service, which is 3 credit(s) 
+	SUFIYA has used S3 service, which is 3 credit(s) 
+Remaining Balance : 242 credits

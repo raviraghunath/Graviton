@@ -6,7 +6,6 @@ import com.graviton.account.AccountManager;
 import com.graviton.account.Ledger;
 import com.graviton.packages.PackageManager;
 import com.graviton.process.BootUpProcess;
-import com.graviton.process.Constants;
 import com.graviton.process.ProcessContext;
 import com.graviton.services.S1;
 import com.graviton.services.S2;
@@ -14,6 +13,7 @@ import com.graviton.services.S3;
 import com.graviton.services.S4;
 import com.graviton.services.ServiceFactory;
 import com.graviton.services.ServiceManager;
+import com.graviton.utils.Constants;
 
 public class GravitonApp {
 

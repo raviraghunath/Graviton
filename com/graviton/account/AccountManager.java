@@ -11,12 +11,12 @@ import com.graviton.services.ServiceContext;
 public class AccountManager {
 
 	private final Ledger ledger;
+	private final Map<String, Integer> credits;
 
 	public AccountManager(Ledger ledger) {
 		this.ledger = ledger;
+		this.credits = new HashMap<String, Integer>();
 	}
-
-	private final Map<String, Integer> credits = new HashMap<String, Integer>();
 
 	public boolean purchasePackageForUser(String userName, com.graviton.packages.Package package1) {
 		synchronized (userName) {

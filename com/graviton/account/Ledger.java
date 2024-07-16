@@ -7,7 +7,11 @@ import java.util.Map;
 
 public class Ledger {
 
-	private final Map<String, List<String>> ledgerLog = new HashMap<String, List<String>>();
+	private final Map<String, List<String>> ledgerLog;
+
+	public Ledger() {
+		this.ledgerLog = new HashMap<String, List<String>>();
+	}
 
 	void postLog(String userName, String log) {
 		synchronized (userName) {

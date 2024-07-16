@@ -14,15 +14,16 @@ public class BootUpProcess implements IProcess {
 	private final PackageManager packageManager;
 	private final ServiceManager serviceManager;
 	private final AccountManager accountManager;
+	private final FileReaderProcess fileReaderProcess;
+	private final FileWriterProcess fileWriterProcess;
 
 	public BootUpProcess(PackageManager packageManager, ServiceManager serviceManager, AccountManager accountManager) {
 		this.packageManager = packageManager;
 		this.serviceManager = serviceManager;
 		this.accountManager = accountManager;
+		this.fileReaderProcess = new FileReaderProcess();
+		this.fileWriterProcess = new FileWriterProcess();
 	}
-
-	private final FileReaderProcess fileReaderProcess = new FileReaderProcess();
-	private final FileWriterProcess fileWriterProcess = new FileWriterProcess();
 
 	@Override
 	public ProcessStatus doProcess(ProcessContext processContext) {
@@ -45,7 +46,7 @@ public class BootUpProcess implements IProcess {
 		List<String> usageInfo = (List<String>) usageInfoReaderprocessStatus.getResultObj();
 
 		for (String priceInfoString : priceInfo) {
-			String[] priceInfoStringSplit = priceInfoString.split("\\|");
+			String[] priceInfoStringSplit = priceInfoString.split(Constants.PIPE_SEPERATOR);
 			if (priceInfoStringSplit[0].equals(Constants.PACKAGE)) {
 				packageManager.createPackage(priceInfoStringSplit[1]);
 			} else if (priceInfoStringSplit[0].equals(Constants.SERVICE)) {
@@ -54,20 +55,21 @@ public class BootUpProcess implements IProcess {
 		}
 
 		for (String purchaseInfoString : purchaseInfo) {
-			String[] purchaseInfoStringSplit = purchaseInfoString.split("\\|");
+			String[] purchaseInfoStringSplit = purchaseInfoString.split(Constants.PIPE_SEPERATOR);
 			String userName = purchaseInfoStringSplit[0];
 			String packageName = purchaseInfoStringSplit[1];
 			accountManager.purchasePackageForUser(userName, packageManager.getPackage(packageName));
 		}
 
 		for (String usageInfoString : usageInfo) {
-			String[] usageInfoStringSplit = usageInfoString.split("\\|");
+			String[] usageInfoStringSplit = usageInfoString.split(Constants.PIPE_SEPERATOR);
 			ServiceContext serviceContext = new ServiceContext();
 			accountManager.takeServiceForUser(usageInfoStringSplit[0],
 					serviceManager.getService(usageInfoStringSplit[1]), serviceContext);
 		}
 
 		processContext.putData(Constants.LOGS, accountManager.getLedger());
+		// This is a hard coded path, can be changed to input based
 		processContext.putData(Constants.FILE_PATH,
 				"/Users/rravindranathan/eclipse-workspace-1/Graviton/src/output.txt");
 		fileWriterProcess.doProcess(processContext);

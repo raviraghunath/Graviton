@@ -8,12 +8,12 @@ import com.graviton.utils.Constants;
 public class ServiceManager {
 
 	private final ServiceFactory serviceFactory;
+	private final Map<String, Service> services;
 
 	public ServiceManager(ServiceFactory serviceFactory) {
 		this.serviceFactory = serviceFactory;
+		this.services = new HashMap<String, Service>();
 	}
-
-	private Map<String, Service> services = new HashMap<String, Service>();
 
 	public Service createService(String serviceInfo) {
 		String[] serviceInfoSplit = serviceInfo.split(Constants.COLON);

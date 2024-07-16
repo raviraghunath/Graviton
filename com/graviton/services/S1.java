@@ -6,7 +6,7 @@ public class S1 implements Service{
 	
 	@Override
 	public ServiceResult doService(ServiceContext serviceContext) {
-		// TODO Auto-generated method stub
+		System.out.println("S1 Service");
 		return null;
 	}
 

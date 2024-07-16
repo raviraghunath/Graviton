@@ -10,5 +10,6 @@ public class Constants {
 	public static final String SERVICE = "SERVICE";
 	public static final String COLON = ":";
 	public static final String LOGS = "LOGS";
+	public static final String PIPE_SEPERATOR = "\\|";
 
 }

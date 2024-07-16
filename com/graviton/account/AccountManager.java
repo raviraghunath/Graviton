@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.graviton.services.Service;
+import com.graviton.services.ServiceContext;
 
 public class AccountManager {
 
@@ -31,7 +32,7 @@ public class AccountManager {
 		return true;
 	}
 
-	public boolean takeServiceForUser(String userName, Service service) {
+	public boolean takeServiceForUser(String userName, Service service, ServiceContext serviceContext) {
 		if (null == service) {
 			ledger.postLog(userName, "Requested for Service that doesn't exists");
 			return false;
@@ -42,6 +43,7 @@ public class AccountManager {
 				ledger.postLog(userName, userName + " has used " + service.getServiceName() + " service, which is "
 						+ service.getServicePrice() + " credit(s) ");
 				credits.put(userName, credits.get(userName) - service.getServicePrice());
+				service.doService(serviceContext);
 			} else {
 				ledger.postLog(userName, "Not sufficient credits for Service : " + service.getServiceName());
 				return false;

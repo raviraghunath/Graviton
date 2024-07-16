@@ -5,6 +5,7 @@ import java.util.List;
 import com.graviton.account.AccountManager;
 import com.graviton.packages.PackageManager;
 import com.graviton.process.ProcessStatus.PROCESS_STATUS;
+import com.graviton.services.ServiceContext;
 import com.graviton.services.ServiceManager;
 
 public class BootUpProcess implements IProcess {
@@ -60,9 +61,9 @@ public class BootUpProcess implements IProcess {
 
 		for (String usageInfoString : usageInfo) {
 			String[] usageInfoStringSplit = usageInfoString.split("\\|");
-
+			ServiceContext serviceContext = new ServiceContext();
 			accountManager.takeServiceForUser(usageInfoStringSplit[0],
-					serviceManager.getService(usageInfoStringSplit[1]));
+					serviceManager.getService(usageInfoStringSplit[1]), serviceContext);
 		}
 
 		processContext.putData(Constants.LOGS, accountManager.getLedger());
